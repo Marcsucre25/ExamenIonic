@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro de Notas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Cerrar sesión</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Nota N°: </ion-label>
+      <ion-input type="text" [(ngModel)]="studentId"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Texto: </ion-label>
+      <ion-input type="text" [(ngModel)]="studentName"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Foto: </ion-label>
+
+    </ion-item>
+  </ion-list>
+  <ion-fab vertical="top" horizontal="end" slot="fixed" style="margin-top: 3cm;">
+    <ion-fab-button (click)="addPhotoToGallery()" style="width:40px; height: 40px;">
+      <ion-icon name="camera" style="width: 20px;"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-button expand="full" (click)="registerStudent()">Registrar Nota</ion-button>
+
+  <ion-label>Fotos: </ion-label>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let photo of cameraService.photos; index as position">
+        <ion-img [src]="photo.webviewPath"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
